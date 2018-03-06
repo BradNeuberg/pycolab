@@ -34,7 +34,7 @@ class CursesUi(object):
   """A terminal-based UI for pycolab games."""
 
   def __init__(self,
-               keys_to_actions, delay=None,
+               keys_to_actions, delay=0,
                repainter=None, colour_fg=None, colour_bg=None,
                croppers=None):
     """Construct and configure a `CursesUi` for pycolab games.
@@ -237,10 +237,10 @@ class CursesUi(object):
     # "colour pairs". Update our dict mapping characters to colour pairs.
     self._init_colour()
     curses.curs_set(0)  # We don't need to see the cursor.
-    if self._delay is None:
-      screen.timeout(-1)  # Blocking reads
-    else:
-      screen.timeout(self._delay)  # Nonblocking (if 0) or timing-out reads
+    # if self._delay is None:
+    #   screen.timeout(-1)  # Blocking reads
+    # else:
+    #   screen.timeout(self._delay)  # Nonblocking (if 0) or timing-out reads
 
     # Create the curses window for the log display
     rows, cols = screen.getmaxyx()
